@@ -2,45 +2,39 @@
 const express = require('express');
 const app = express();
 
-// البورت من Heroku أو 3000 احتياطي
 const PORT = process.env.PORT || 3000;
 
-// نقطة فحص
 app.get('/', (req, res) => res.send('Bot is alive!'));
-app.get('/status', (req, res) => {
-    res.json({
-        status: 'running',
-        username: bot?.username || 'bot not connected',
-        connected: Boolean(bot?.entity),
-        time: new Date().toISOString()
-    });
-});
-
-// تشغيل السيرفر
 app.listen(PORT, () => {
     console.log('🌐 Express server running on port', PORT);
 });
 
-// إنشاء البوت
-let bot = mineflayer.createBot({
-    host: '_Survivors_.aternos.me', // ← غيره إذا أردت
-    port: 45848,                    // ← تأكد أنه صحيح
-    username: 'blackbot' + Math.floor(Math.random() * 1000),
-    version: '1.21.6'
-});
+let bot;
 
-bot.on('spawn', () => {
-    console.log('✅ Bot connected as', bot.username);
+function startBot() {
+    bot = mineflayer.createBot({
+        host: '_Survivors_.aternos.me', // ← تأكد من أن السيرفر شغال
+        port: 45848,                    // ← تحقق من البورت
+        username: 'blackbot' + Math.floor(Math.random() * 1000),
+        version: '1.21.6'
+    });
 
-    // تنفيذ حركة بسيطة
-    setInterval(() => {
-        bot.setControlState('jump', true);
-        setTimeout(() => bot.setControlState('jump', false), 1000);
-    }, 60000); // كل 60 ثانية
-});
+    bot.on('spawn', () => {
+        console.log('✅ Bot connected as', bot.username);
+        setInterval(() => {
+            bot.setControlState('jump', true);
+            setTimeout(() => bot.setControlState('jump', false), 1000);
+        }, 60000);
+    });
 
-bot.on('end', () => {
-    console.log('❌ Bot disconnected. Waiting before reconnect...');
-    // بدل ما نغلق التطبيق، ممكن نحاول إعادة الاتصال لاحقًا (اختياري)
-    // أو نتركه فقط مفتوح
-});
+    bot.on('end', () => {
+        console.log('❌ Bot disconnected. Waiting before reconnect...');
+        setTimeout(startBot, 10000); // إعادة الاتصال بعد 10 ثوانٍ
+    });
+
+    bot.on('error', (err) => {
+        console.log('⚠️ Bot error:', err.message);
+    });
+}
+
+startBot(); // تشغيل البوت أول مرة
