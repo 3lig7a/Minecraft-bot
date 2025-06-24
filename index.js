@@ -41,6 +41,9 @@ bot.on('spawn', () => {
 });
 
 bot.on('end', () => {
-    console.log('? Bot disconnected. Restarting...');
-    setTimeout(() => process.exit(1), 1000);
+    console.log('? Bot disconnected. Trying to reconnect...');
+    setTimeout(() => {
+        bot = mineflayer.createBot({ /* config */ });
+    }, 10000);
 });
+
