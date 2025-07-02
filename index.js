@@ -16,7 +16,7 @@ function startBot() {
         host: '_Survivors_.aternos.me', // ← تأكد من أن السيرفر شغال
         port: 45848,                    // ← تحقق من البورت
         username: 'blackbot' + Math.floor(Math.random() * 1000),
-        version: '1.21.1'
+        version: '1.19.2'
     });
 
     bot.on('spawn', () => {
