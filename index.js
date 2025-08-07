@@ -13,8 +13,8 @@ let bot;
 
 function startBot() {
     bot = mineflayer.createBot({
-        host: '_Survivors_.aternos.me', // ← تأكد من أن السيرفر شغال
-        port: 45848,                    // ← تحقق من البورت
+        host: '_Survivors_.aternos.me',
+        port: 45848,                   
         username: 'blackbot' + Math.floor(Math.random() * 1000),
         version: '1.19.2'
     });
@@ -29,7 +29,7 @@ function startBot() {
 
     bot.on('end', () => {
         console.log('❌ Bot disconnected. Waiting before reconnect...');
-        setTimeout(startBot, 10000); // إعادة الاتصال بعد 10 ثوانٍ
+        setTimeout(startBot, 10000);
     });
 
     bot.on('error', (err) => {
@@ -37,4 +37,4 @@ function startBot() {
     });
 }
 
-startBot(); // تشغيل البوت أول مرة
+startBot();
