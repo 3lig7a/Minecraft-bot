@@ -5,8 +5,10 @@
     "scripts": {
         "start": "node index.js"
     },
-    "engines": {
-        "node": "20.x"
+  "engines": {
+  "node": ">=22"
+}
+
     },
     "dependencies": {
         "mineflayer": "^4.16.0",
