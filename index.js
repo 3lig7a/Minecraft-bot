@@ -1,4 +1,4 @@
-﻿const mineflayer = require('mineflayer');
+const mineflayer = require('mineflayer');
 const express = require('express');
 const app = express();
 
@@ -13,10 +13,10 @@ let bot;
 
 function startBot() {
     bot = mineflayer.createBot({
-        host: 'CraftersHub.play.hosting',
-        port: 7402,                   
+        host: '_Survivors_.aternos.me',
+        port: 45848,                   
         username: 'blackbot' + Math.floor(Math.random() * 1000),
-        version: '1.21.8'
+        version: '1.19.2'
     });
 
     bot.on('spawn', () => {
