@@ -13,8 +13,8 @@ let bot;
 
 function startBot() {
     bot = mineflayer.createBot({
-        host: '_Survivors_.aternos.me',
-        port: 45848,                   
+        host: 'CraftersHub.play.hosting',
+        port: 7399,                   
         username: 'blackbot' + Math.floor(Math.random() * 1000),
         version: '1.19.2'
     });
