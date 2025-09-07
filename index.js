@@ -16,7 +16,7 @@ function startBot() {
         host: '_Survivors_.aternos.me',
         port: 45848,                   
         username: 'blackbot' + Math.floor(Math.random() * 1000),
-        version: '1.19.2'
+        version: '1.21.8'
     });
 
     bot.on('spawn', () => {
