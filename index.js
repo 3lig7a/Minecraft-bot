@@ -14,7 +14,7 @@ let bot;
 function startBot() {
     bot = mineflayer.createBot({
         host: 'CraftersHub.play.hosting',
-        port: 127.0.0.1:7402,                   
+        port: 7402,                   
         username: 'blackbot' + Math.floor(Math.random() * 1000),
         version: '1.21.8'
     });
